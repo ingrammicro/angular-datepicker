@@ -175,8 +175,12 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
         return scope.date ? scope.date.getMonth() : null;
       }
 
-
       scope.$watch(watch, update);
+
+      scope.$watch('model', function() {
+        arrowClick = false;
+        update();
+      });
 
       scope.next = function (delta) {
         var date = scope.date;
